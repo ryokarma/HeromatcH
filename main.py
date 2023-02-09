@@ -18,7 +18,7 @@ user_okay = True
 
 if left_hero == right_hero:
     exit()
-    #en realité s'ils sont égaux on relance le choix random du right_hero
+
 else:
     while user_okay == True:
         user_choice = input(f"Tapez 1 si vous votez pour {left_hero}, ou 2 si vous votez pour {right_hero}.")
