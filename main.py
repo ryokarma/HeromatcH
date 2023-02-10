@@ -1,16 +1,13 @@
+import random
+import config as cfg
+
+
 test = True
 while test:
 
-    with open("names.txt", "r") as file:
-        name_list = file.read().split()
-
-    import random
-
-    random_name_1 = random.choice(name_list)
-    name_list.remove(random_name_1)
-    random_name_2 = random.choice(name_list)
-
-
+    random_name_1 = random.choice(cfg.names)
+    cfg.names.remove(random_name_1)
+    random_name_2 = random.choice(cfg.names)
 
     left_hero = random_name_1
     left_wins = 0
@@ -36,6 +33,3 @@ while test:
         else:
             print("Merci de taper uniquement 1 ou 2, espèce de gros naze.")
             user_okay = True
-
-
-
