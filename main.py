@@ -1,5 +1,9 @@
 import random
 import json
+import math
+
+def combinaison(n):
+    return math.factorial(n) / (math.factorial(2) * math.factorial(n-2))
 
 with open("names.txt", "r") as file:
     name_list = [line.strip() for line in file.readlines()]
@@ -10,11 +14,18 @@ names_json = json.dumps(name_dict)
 with open("names_json.json", "w") as f:
     f.write(names_json)
 
-for i in range(3):
+voted_pairs = set()
 
-    left_hero = random.choice(name_list)
-    name_list.remove(left_hero)
-    right_hero = random.choice(name_list)
+
+for i in range(int(combinaison(len(name_list)))):
+    pair = None
+    while pair is None or pair in voted_pairs:
+        left_hero = random.choice(name_list)
+        name_list.remove(left_hero)
+        right_hero = random.choice(name_list)
+        pair = (left_hero, right_hero)
+        name_list.append(left_hero)
+    voted_pairs.add(pair)
 
     user_okay = True
     while user_okay:
